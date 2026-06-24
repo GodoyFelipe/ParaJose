@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Josefina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Caveat:wght@500;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#ff8ec7;
+    --wine:#ff5fa2;
+    --soft:#ffe3f0;
+    --gold:#ffcfe3;
+    --ink:#fbeaf3;
+    --night:#06030a;
+    --paper:#171225;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0;
+    background: radial-gradient(ellipse at 50% 0%, #1c1230 0%, var(--night) 55%, #030308 100%);
+    font-family:'Lato', sans-serif;
+    color:var(--ink);
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+   #galaxy{
+    position:fixed; inset:0; z-index:0; overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 15%, rgba(155,89,182,.35), transparent 70%),
+      radial-gradient(ellipse 50% 35% at 80% 70%, rgba(80,60,160,.30), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(40,20,70,.5), transparent 70%);
+  }
+  .milky-band{
+    position:absolute; top:50%; left:50%;
+    width:260vmax; height:34vmax; max-height:480px;
+    transform: translate(-50%,-50%) rotate(-28deg);
+    background:
+      linear-gradient(180deg,
+        rgba(255,255,255,0) 0%,
+        rgba(230,225,255,.10) 18%,
+        rgba(255,235,245,.22) 38%,
+        rgba(255,245,235,.30) 50%,
+        rgba(255,235,245,.22) 62%,
+        rgba(230,225,255,.10) 82%,
+        rgba(255,255,255,0) 100%);
+    filter: blur(3px);
+    mix-blend-mode: screen;
+  }
+  .milky-band::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 18% 60% at 30% 50%, rgba(40,15,30,.35), transparent 70%),
+      radial-gradient(ellipse 14% 50% at 62% 45%, rgba(30,10,40,.30), transparent 70%),
+      radial-gradient(ellipse 20% 55% at 80% 55%, rgba(35,15,30,.25), transparent 70%);
+    mix-blend-mode: multiply;
+  }
+  .milky-dust{
+    position:absolute; inset:0; border-radius:50%;
+  }
+  .star.layer-far{ animation-duration: 4s !important; opacity:.35; }
+  .star.layer-near{ filter: drop-shadow(0 0 3px rgba(255,255,255,.6)); }
+  .star{
+    position:absolute; background:#fff; border-radius:50%;
+    animation: twinkle ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:.25; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.4);}
+  }
+  .shooting-star{
+    position:absolute; width:2px; height:2px; background:#fff; border-radius:50%;
+    box-shadow:0 0 6px 1px #fff;
+    opacity:0;
+    animation: shoot linear infinite;
+  }
+  @keyframes shoot{
+    0%{ opacity:0; transform: translate(0,0); }
+    2%{ opacity:1; }
+    14%{ opacity:0; transform: translate(-260px,260px); }
+    100%{ opacity:0; }
+  }
+  #cover{ position:fixed; inset:0; z-index:50; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(ellipse at 50% 30%, #261a3d 0%, #0e0a1c 70%, #030308 100%); transition: transform 1.1s cubic-bezier(.7,0,.3,1), opacity 1.1s ease; }
+  #cover.open{ transform: translateY(-100%); opacity:0; pointer-events:none; }
+  .envelope{ width:220px; height:150px; position:relative; cursor:pointer; filter: drop-shadow(0 18px 30px rgba(0,0,0,.5)); transition: transform .25s ease; }
+  .envelope:hover{ transform: scale(1.03); }
+  .envelope .body{ position:absolute; inset:0; background: linear-gradient(160deg,#4a2c6b,#2a1840); border-radius:22px; border:1px solid rgba(255,207,227,.3); }
+  .envelope .flap{
+    position:absolute; top:0; left:0; width:100%; height:62%;
+    clip-path: polygon(0 0, 50% 78%, 100% 0);
+    background:linear-gradient(160deg,#5e3a82,#2a1840);
+    border-radius:22px 22px 0 0;
+    transform-origin:top;
+    transition: transform .8s cubic-bezier(.7,0,.3,1);
+    z-index:3;
+  }
+  .envelope.opened .flap{ transform: rotateX(180deg); }
+  .envelope .heart-seal{ position:absolute; top:38%; left:50%; transform:translate(-50%,-50%); font-size:30px; color:#ffd6e6; z-index:4; transition:opacity .3s ease, transform .3s ease; filter: drop-shadow(0 0 10px rgba(255,143,196,.7)); }
+  .envelope.opened .heart-seal{ opacity:0; transform:translate(-50%,-50%) scale(.4); }
+  .envelope .letter-peek{
+    position:absolute; left:6%; bottom:6%; width:88%; height:74%;
+    background:var(--soft); border-radius:16px; z-index:2;
+    transition: transform .9s cubic-bezier(.6,0,.3,1) .15s; transform: translateY(0);
+  }
+  .envelope.opened .letter-peek{ transform: translateY(-120px) scale(1.04); }
+  #cover p.hint{ margin-top:34px; font-family:'Caveat', cursive; font-size:1.6rem; color:var(--gold); animation: pulse 1.8s ease-in-out infinite; }
+  #cover h1.title-cover{ font-family:'Caveat', cursive; font-weight:700; color:var(--ink); margin-bottom:26px; font-size:2.2rem; letter-spacing:.5px; }
+  @keyframes pulse{0%,100%{opacity:.55;}50%{opacity:1;}}
+  main{ max-width:680px; margin:0 auto; padding:90px 28px 120px; position:relative; z-index:2; }
+  .eyebrow{ text-align:center; font-family:'Caveat', cursive; font-size:1.5rem; color:var(--gold); letter-spacing:.5px; margin-bottom:6px; opacity:0; transform:translateY(14px); }
+  h1.hero{ text-align:center; font-family:'Playfair Display', serif; font-weight:600; font-size:3.4rem; color:var(--ink); margin:0 0 8px; opacity:0; transform:translateY(14px); }
+  h1.hero em{ font-style:italic; color:var(--wine);}
+  .divider{ width:64px; height:2px; background:var(--gold); margin:28px auto 46px; opacity:0; }
+  section.note{ opacity:0; transform:translateY(18px); margin-bottom:46px; }
+  section.note p{ font-size:1.15rem; line-height:1.9; font-weight:300; margin:0 0 18px; color:#e6e0f0; }
+  section.note .firstcap::first-letter{ font-family:'Playfair Display', serif; font-size:3.2rem; font-weight:600; color:var(--gold); float:left; line-height:.8; padding-right:10px; padding-top:6px; }
+  .accent-line{ font-family:'Caveat', cursive; font-size:1.7rem; color:var(--wine); text-align:center; margin:40px 0; opacity:0; }
+  .infinity-wrap{
+    display:flex; justify-content:center; margin:10px 0 4px; opacity:0; position:relative; height:90px;
+  }
+  .infinity-wrap svg{ width:180px; height:80px; }
+  .infinity-wrap .infinity-path{
+    fill:none; stroke:url(#infGrad); stroke-width:2.2; stroke-linecap:round;
+    stroke-dasharray:6 10;
+    animation: infinity-flow 4s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(255,180,220,.6));
+  }
+  @keyframes infinity-flow{ to{ stroke-dashoffset:-160; } }
+  .heart-wrap{ display:flex; justify-content:center; margin:60px 0 30px; opacity:0; }
+  .heart-wrap svg{ width:90px; height:90px; animation: beat 1.15s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(226,166,207,.4)); }
+  @keyframes beat{ 0%,100%{transform:scale(1);} 20%{transform:scale(1.12);} 35%{transform:scale(.96);} 50%{transform:scale(1.08);} }
+  .promises{ list-style:none; padding:0; margin:50px 0; opacity:0; }
+  .promises li{ display:flex; gap:14px; align-items:flex-start; font-size:1.05rem; line-height:1.7; margin-bottom:20px; font-weight:300; color:#e6e0f0; }
+  .promises li svg{ flex:none; margin-top:4px; width:18px; height:18px; color:var(--gold);}
+  .gallery-title{ text-align:center; font-family:'Caveat', cursive; font-size:1.9rem; color:var(--gold); margin: 70px 0 26px; opacity:0; }
+  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; opacity:0; }
+  .gallery .frame{
+    position:relative; aspect-ratio:1/1.1; border-radius:10px; overflow:hidden;
+    background: linear-gradient(160deg,#2a1c45,#150e26);
+    border:1px solid rgba(232,194,122,.25);
+    display:flex; align-items:center; justify-content:center;
+    transition: transform .35s ease;
+  }
+  .gallery .frame:hover{ transform: translateY(-4px) scale(1.02); }
+  .gallery .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery .frame .placeholder{ font-family:'Caveat', cursive; color:#8d7aab; font-size:.95rem; text-align:center; padding:8px; }
+  .gallery .frame .star-icon{ font-size:1.4rem; color:var(--gold); display:block; margin-bottom:4px; }
+  @media (max-width:480px){ .gallery{ grid-template-columns:repeat(2,1fr); } }
+  .music-box{
+    margin: 60px auto 10px; max-width:420px;
+    background: linear-gradient(160deg,rgba(58,35,86,.5),rgba(20,14,38,.5));
+    border:1px solid rgba(232,194,122,.3);
+    border-radius:16px; padding:18px 22px;
+    display:flex; align-items:center; gap:16px;
+    opacity:0;
+  }
+  .music-box button{ flex:none; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background: var(--gold); color:#2a1c45; font-size:1.1rem; display:flex; align-items:center; justify-content:center; }
+  .music-box .info{ flex:1; }
+  .music-box .info p{ margin:0; font-size:.9rem; color:#cfc3e8; }
+  .music-box .info .song-name{ font-family:'Caveat', cursive; font-size:1.3rem; color:var(--ink); }
+  .vinyl{ width:22px; height:22px; border-radius:50%; background: radial-gradient(circle, #111 30%, var(--gold) 31%, #111 33%); animation: spin 3s linear infinite paused; }
+  .music-box.playing .vinyl{ animation-play-state: running; }
+  @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  .signoff{ text-align:center; margin-top:70px; opacity:0; }
+  .signoff p{ font-size:1.2rem; font-weight:300; margin-bottom:6px; color:#e6e0f0; }
+  .signoff .signature{ font-family:'Caveat', cursive; font-weight:700; font-size:2.6rem; color:var(--gold); margin-top:8px; }
+  .reveal{ transition: opacity 1s ease, transform 1s ease; }
+  .reveal.show{ opacity:1 !important; transform:translateY(0) !important; }
+  footer{ text-align:center; font-size:.78rem; color:#7c6f99; padding-bottom:30px; font-family:'Lato', sans-serif; letter-spacing:.5px; }
+  @media (max-width:480px){ h1.hero{font-size:2.4rem;} main{padding:70px 20px 90px;} }
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+</style>
+</head>
+<body>
+
+<div id="galaxy">
+  <div class="milky-band"></div>
+</div>
+
+<div id="cover">
+  <h1 class="title-cover">Con mucho amor y cariño</h1>
+  <div class="envelope" id="envelope">
+    <div class="letter-peek"></div>
+    <div class="flap"></div>
+    <div class="body"></div>
+    <div class="heart-seal">❤</div>
+  </div>
+  <p class="hint">tócame para leer</p>
+</div>
+
+<main>
+  <p class="eyebrow reveal">Coincidimos, entre miles</p>
+  <h1 class="hero reveal"> <em>puntitos del espacio</em></h1>
+  <div class="divider reveal"></div>
+
+  <section class="note reveal">
+
+    <p class="firstcap">A veces siento que mis inseguridades, mis silencios y mi forma de enfrentar las cosas terminan hablando más fuerte que mis sentimientos, y eso me duele, porque no representan todo lo que realmente siento por ti.
+      Quiero que sepas que nunca fuiste un error, nunca fuiste un reemplazo, nunca ocupaste el lugar de nadie. Lo que vivimos fue real para mí. Cada conversación, cada abrazo, cada desayuno, cada almuerzo, cada once, cada viaje, cada noche durmiendo juntos, cada mirada y cada momento que compartimos tienen un lugar muy especial en mi corazón.
+      También quiero que sepas que no siento que hayas hecho algo mal. Sé que muchas veces te has preguntado qué te faltó hacer o qué podrías haber hecho diferente, pero honestamente no es eso. Nunca sentí falta de amor de tu parte. Al contrario. Siempre sentí tu cariño, tu preocupación, tu apoyo y la forma tan genuina en que me elegías cada día.
+    </p>
+
+    <p>No vengo a buscar excusas. Vengo a decirte que te veo, que entiendo que te fallé en algo, y que me importa arreglarlo.</p>
+  </section>
+
+  <h1 class="hero reveal"> <em>porque entre todo el universo, coincidimos entre tantas estrellas.</em></h1>
+
+  <!-- <div class="infinity-wrap reveal">
+    <svg viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="infGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ffcfe3"/>
+          <stop offset="50%" stop-color="#ff8ec7"/>
+          <stop offset="100%" stop-color="#ffcfe3"/>
+        </linearGradient>
+      </defs>
+      <path class="infinity-path" d="M45,40 C45,20 65,20 80,40 C95,60 115,60 135,40 C115,20 95,20 80,40 C65,60 45,60 45,40 Z"/>
+    </svg>
+  </div> -->
+
+  <p class="accent-line reveal" style="margin-top:-6px;">COMO ESTE CIELO</p>
+
+  <div class="heart-wrap reveal">
+    <svg viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M23.6 0c-3.4 0-6.3 2-7.6 5C14.7 2 11.8 0 8.4 0 3.8 0 0 3.8 0 8.4c0 7.2 9.6 13.6 16 19.6 6.4-6 16-12.4 16-19.6C32 3.8 28.2 0 23.6 0z" fill="#e2a6cf"/>
+    </svg>
+  </div>
+
+  <section class="note reveal">
+    <p>Me importas muchísimo.
+      Me gusta la persona que soy cuando estoy contigo. Me gusta cómo me haces querer ser mejor. Me gusta que me desafíes a crecer, a mirar mis emociones, a enfrentar cosas que normalmente escondería. Me gusta pensar en un futuro donde ambos podamos ser mejores personas, no por obligación, sino porque nos inspiramos mutuamente a serlo.
+      Tú viste cosas buenas en mí cuando ni siquiera yo las estaba viendo. Creíste en mí cuando te hablaba de mis metas, de mis proyectos, de mis ideas. Me escuchaste, me apoyaste y me hiciste sentir acompañado.
+    </p>
+
+    <p>Y quizás una de las cosas que más me duele de todo esto es pensar que en algún momento llegaste a creer que no fuiste suficiente para mí, porque la verdad es exactamente la contraria.
+      Fuiste importante.
+      Eres importante.
+      Y ocupas un lugar muy especial en mi vida y en mi corazón.
+    </p>
+  </section>
+
+  <h2 class="gallery-title reveal">CADA RECUERDO ES ESPCECIAL Y UNICO.</h2>
+  <div class="gallery reveal">
+    <div class="frame"><img src="/Img/f1.JPEG" alt=""></div>
+    <div class="frame"><img src="/Img/f2.JPEG" alt=""></div>
+    <div class="frame"><img src="/Img/f3.JPEG" alt=""></div>
+    <div class="frame"><img src="/Img/f4.JPEG" alt=""></div>
+    <div class="frame"><img src="/Img/f5.JPEG" alt=""></div>
+    <div class="frame"><img src="/Img/f6.JPEG" alt=""></div>
+  </div>
+  <!-- <div class="music-box" id="musicBox">
+    <button id="playBtn">▶</button>
+    <div class="info">
+      <p class="song-name">nuestra canción</p>
+      <p>tócame para escucharla</p>
+    </div>
+    <div class="vinyl"></div>
+  </div> -->
+
+  <audio id="audio" src="/Music/marea.mp3" loop></audio>
+
+  <section class="note reveal">
+    <p>sé que jamás voy a mirar este tiempo contigo como algo que no valió la pena.
+      Porque me enseñaste a querer de una forma distinta. Me enseñaste ternura, compañía, paciencia y amor. Y por eso voy a estar siempre agradecido.
+      Te amo, Jose. Con mis certezas, con mis dudas, con mis miedos y también con todo lo bueno que siento por ti.
+      Y si algo deseo para mí, para ti y para nosotros, es que podamos seguir creciendo, sanando y convirtiéndonos en mejores personas, porque tú has sido una de las personas más importantes y bonitas que han llegado a mi vida.
+    </p>
+  </section>
+
+  <div class="signoff reveal">
+    <p>Te quiero & Te amo, Josefina. Más de lo que normalmente logro decir en voz alta.</p>
+    <P></P>
+    <div class="signature">Con mucho amor, bajo las mismas estrellas</div>
+  </div>
+
+</main>
+
+<footer>Con mucho amor, bajo las mismas estrellas</footer>
+
+<script>
+  const galaxy = document.getElementById('galaxy');
+
+  // estrellas dispersas por todo el cielo
+  for(let i=0;i<110;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    const size = Math.random()*2+0.5;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.left = Math.random()*100+'vw';
+    s.style.top = Math.random()*100+'vh';
+    s.style.animationDuration = (1.2+Math.random()*3.5)+'s';
+    s.style.animationDelay = (Math.random()*4)+'s';
+    galaxy.appendChild(s);
+  }
+
+  // banda densa de la Vía Láctea (diagonal, de esquina superior izq a inferior der)
+  const angle = -28 * Math.PI/180;
+  const cx = window.innerWidth/2, cy = window.innerHeight/2;
+  for(let i=0;i<260;i++){
+    const along = (Math.random()-0.5) * window.innerWidth*1.6;
+    const across = (Math.random()-0.5) * Math.min(window.innerHeight*0.32, 380);
+    const x = cx + along*Math.cos(angle) - across*Math.sin(angle);
+    const y = cy + along*Math.sin(angle) + across*Math.cos(angle);
+    const s = document.createElement('div');
+    s.className='star';
+    const size = Math.random()*2.2+0.5;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.left = x+'px';
+    s.style.top = y+'px';
+    s.style.animationDuration = (1+Math.random()*3)+'s';
+    s.style.animationDelay = (Math.random()*4)+'s';
+    if(size>1.6) s.style.boxShadow = '0 0 5px 1px rgba(255,235,245,.8)';
+    galaxy.appendChild(s);
+  }
+  for(let i=0;i<4;i++){
+    const sh = document.createElement('div');
+    sh.className='shooting-star';
+    sh.style.left = (20+Math.random()*60)+'vw';
+    sh.style.top = (Math.random()*40)+'vh';
+    sh.style.animationDuration = (6+Math.random()*5)+'s';
+    sh.style.animationDelay = (Math.random()*10)+'s';
+    galaxy.appendChild(sh);
+  }
+
+  const envelope = document.getElementById('envelope');
+  const cover = document.getElementById('cover');
+  envelope.addEventListener('click', () => {
+    if(envelope.classList.contains('opened')) return;
+    envelope.classList.add('opened');
+
+    // arranca la música en el mismo clic que abre el sobre
+    const audioEl = document.getElementById('audio');
+    const playButton = document.getElementById('playBtn');
+    const musicBoxEl = document.getElementById('musicBox');
+    audioEl.play().then(()=>{
+      playButton.textContent='❙❙';
+      musicBoxEl.classList.add('playing');
+    }).catch(()=>{ /* si el navegador igual lo bloquea, queda el botón ▶ para activarla manualmente */ });
+
+    setTimeout(()=>{
+      cover.classList.add('open');
+      document.body.style.overflow='auto';
+      revealAll();
+    }, 950);
+  });
+  document.body.style.overflow='hidden';
+
+  function revealAll(){
+    const items = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          obs.unobserve(e.target);
+        }
+      });
+    }, {threshold:.15});
+    items.forEach((el,i)=>{
+      el.style.transitionDelay = (i%4)*0.08+'s';
+      obs.observe(el);
+    });
+  }
+
+  const audio = document.getElementById('audio');
+  const playBtn = document.getElementById('playBtn');
+  const musicBox = document.getElementById('musicBox');
+  playBtn.addEventListener('click', ()=>{
+    if(audio.paused){
+      audio.play().catch(()=>{});
+      playBtn.textContent='❙❙';
+      musicBox.classList.add('playing');
+    } else {
+      audio.pause();
+      playBtn.textContent='▶';
+      musicBox.classList.remove('playing');
+    }
+  });
+</script>
+
+</body>
+</html>
