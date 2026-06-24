@@ -180,7 +180,8 @@
   h1.hero{ 
     text-align:center; font-family:'Playfair Display', serif; font-weight:600; 
     font-size:3.4rem; color:var(--ink); margin:0 0 8px; 
-    opacity:0; transform:translateY(14px); 
+    opacity:0; transform:translateY(14px);
+    text-shadow: 0 2px 20px rgba(0,0,0,.6);
   }
   
   h1.hero em{ 
@@ -194,13 +195,21 @@
   .divider{ 
     width:64px; height:2px; background:var(--gold); margin:28px auto 46px; opacity:0; 
   }
-  
-  section.note{ 
-    opacity:0; transform:translateY(18px); margin-bottom:46px; 
+
+  section.note{
+    opacity:0; transform:translateY(18px); margin-bottom:46px;
+    background: rgba(8,5,18,.45);
+    border-radius:20px;
+    padding:28px 26px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 10px 40px rgba(0,0,0,.25);
   }
   
-  section.note p{ 
-    font-size:1.15rem; line-height:1.9; font-weight:300; margin:0 0 18px; color:#e6e0f0; 
+  section.note p{
+    font-size:1.15rem; line-height:1.9; font-weight:300; margin:0 0 18px;
+    color:#f3eefc;
+    text-shadow: 0 1px 8px rgba(0,0,0,.5);
   }
   
   section.note .firstcap::first-letter{ 
@@ -479,7 +488,7 @@
     <div class="body"></div>
     <div class="heart-seal">❤</div>
   </div>
-  <p class="hint">Tócame para leer</p>
+  <p class="hint">tócame para leer ❤️</p>
 </div>
 
 <!-- ===== MAIN ===== -->
@@ -489,7 +498,7 @@
   <div class="divider reveal"></div>
 
   <section class="note reveal">
-    <p class="firstcap">A veces siento que mis inseguridades, mis silencios y mi forma de enfrentar las cosas terminan hablando más fuerte que mis sentimientos, y eso me duele, porque no representan todo lo que realmente siento por ti.
+    <p class="firstcap">Mmmm, no se como comenzar esto. Es un pequeño detalle para remediar (un poquito) las cosas. A veces siento que mis inseguridades, mis silencios y mi forma de enfrentar las cosas terminan hablando más fuerte que mis sentimientos, y eso me duele, porque no representan todo lo que realmente siento por ti.
       Quiero que sepas que nunca fuiste un error, nunca fuiste un reemplazo, nunca ocupaste el lugar de nadie. Lo que vivimos fue real para mí. Cada conversación, cada abrazo, cada desayuno, cada almuerzo, cada once, cada viaje, cada noche durmiendo juntos, cada mirada y cada momento que compartimos tienen un lugar muy especial en mi corazón.
       También quiero que sepas que no siento que hayas hecho algo mal. Sé que muchas veces te has preguntado qué te faltó hacer o qué podrías haber hecho diferente, pero honestamente no es eso. Nunca sentí falta de amor de tu parte. Al contrario. Siempre sentí tu cariño, tu preocupación, tu apoyo y la forma tan genuina en que me elegías cada día.
     </p>
@@ -519,66 +528,199 @@
   </section>
 
   <!-- ===== TIMELINE MEJORADA CON IMÁGENES Y DESCRIPCIONES ===== -->
-  <h2 class="gallery-title reveal">NUESTRA HISTORIA ✦</h2>
+  <h2 class="gallery-title reveal">UN POQUITO DE NUESTRA HISTORIA 🌠</h2>
   <div class="timeline reveal">
     
-    <div class="timeline-item">
-      <span class="date"><span class="date-icon">🌠</span> 2024</span>
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">🌠</span> 2025</span>
       <div class="timeline-content">
         <div class="timeline-img">
-          <img src="Img/f1.JPEG" alt="Nuestro primer encuentro" loading="lazy">
+          # Esta es la primera foto que se ve al abrir la carta: por eso carga "eager" (rápido) y no "lazy" -->
+          <!-- <img src="/Img/dunas.JPEG" alt="Nuestro primer encuentro" loading="eager" fetchpriority="high">
         </div>
-        <h3 class="timeline-title">El día que el universo nos presentó</h3>
+        <h3 class="timeline-title">El día que nos dimos cuenta de lo bien que la pasamos JUNTITOS</h3>
         <p class="timeline-desc">Ese día todo cambió. No sabía que una conversación podía sentirse tan natural, tan nuestra. Fue como si las estrellas se hubieran alineado solo para que nuestros caminos se cruzaran.</p>
-        <span class="timeline-tag">✨ Primer encuentro</span>
+        <span class="timeline-tag">✨ Primer viajecito</span>
       </div>
-    </div>
+    </div> --> 
 
-    <div class="timeline-item">
-      <span class="date"><span class="date-icon">✈️</span> 2024</span>
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">✈️</span> 2025</span>
       <div class="timeline-content">
         <div class="timeline-img">
-          <img src="Img/f2.JPEG" alt="Nuestro primer viaje" loading="lazy">
+          <img src="/Img/fotobus.JPEG" alt="Nuestro primer viaje" loading="lazy">
         </div>
         <h3 class="timeline-title">Aventura juntos</h3>
-        <p class="timeline-desc">Nuestro primer viaje. Cada paisaje fue más bonito porque lo compartí contigo. Las risas, los mapas perdidos y los atardeceres que vimos juntos quedaron grabados en mi corazón.</p>
+        <p class="timeline-desc">Nuestro primer viaje (en bus). Cada paisaje fue más bonito porque lo compartí contigo. Las risas, los mapas perdidos y los atardeceres que vimos juntos quedaron grabados en mi corazón. Y ese dia que fue un 14F, las mariposas se revolvieron en mi estomago</p>
         <span class="timeline-tag">✈️ Primer viaje</span>
       </div>
-    </div>
+    </div> -->
 
-    <div class="timeline-item">
-      <span class="date"><span class="date-icon">💫</span> 2024</span>
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">💫</span> 2025</span>
       <div class="timeline-content">
         <div class="timeline-img">
-          <img src="Img/f3.JPEG" alt="Momentos especiales" loading="lazy">
+          <img src="/Img/arena.JPEG" alt="Momentos especiales" loading="lazy">
         </div>
         <h3 class="timeline-title">Cada momento se convirtió en estrella</h3>
         <p class="timeline-desc">No necesitábamos grandes planes para ser felices. Un café, una caminata, una conversación hasta tarde. Cada pequeño instante se volvió especial porque estaba contigo.</p>
         <span class="timeline-tag">⭐ Momentos cotidianos</span>
       </div>
-    </div>
+    </div> -->
 
-    <div class="timeline-item">
+    <!-- <div class="timeline-item">
       <span class="date"><span class="date-icon">🌙</span> 2025</span>
       <div class="timeline-content">
         <div class="timeline-img">
-          <img src="Img/f4.JPEG" alt="Bajo las estrellas" loading="lazy">
+          <img src="/Img/besito.JPEG" alt="Bajo las estrellas" loading="lazy">
         </div>
         <h3 class="timeline-title">Bajo el mismo cielo</h3>
         <p class="timeline-desc">Las noches en que mirábamos las estrellas y hablábamos de todo y de nada. Esos silencios cómplices que decían más que mil palabras. Siempre voy a recordar cómo se veía el cielo a tu lado.</p>
         <span class="timeline-tag">🌌 Noches estrelladas</span>
       </div>
-    </div>
+    </div> -->
+
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/abrazo.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Siguiendo brillando juntos</h3>
+        <p class="timeline-desc">Aquí seguimos, creciendo, aprendiendo y eligiéndonos cada día. Porque el amor no es perfecto, pero cuando es genuino, siempre encuentra la forma de brillar.</p>
+        <span class="timeline-tag">Por más dias juntos</span>
+      </div>
+    </div> -->
 
     <div class="timeline-item">
-      <span class="date"><span class="date-icon">❤️</span> Hoy</span>
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="Img/beso.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Siguiendo brillando juntos</h3>
+        <p class="timeline-desc">Aquí, sentaditos viendo el mar en Isla Negra, y como siempre tú compañia y energia se sentia como si siempre hubieramos estado juntos.</p>
+        <span class="timeline-tag">Besito en la cabecita</span>
+      </div>
+    </div>
+
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/caminata.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Fotito de nuestro primer viaje</h3>
+        <p class="timeline-desc">Recuerdo que caminamos la costa entre varias playa de Quintero, donde por primera vez me diste la manito (bueno, eran nuestro deditos)</p>
+        <span class="timeline-tag">Caminando juntitos</span>
+      </div>
+    </div> -->
+
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/fotohorcon.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Caleta Horcon</h3>
+        <p class="timeline-desc">Viajecito donde fuimos acomañado de amigos. Ese viaje me hizo darme cuenta lo mucho que me gustas, y que dia que pasaba más sentia cositas en mi watita u,u</p>
+        <span class="timeline-tag">En la playita nuevamente jiji</span>
+      </div>
+    </div> -->
+
+    <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="Img/f1.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Viña del Mar</h3>
+        <p class="timeline-desc">Ese dia uuuuf que caminamos, fuimos a la playita y almmorzamos muy rico. Despues nos costo un mundo encontrar donde quedarnos pero, como usted es seca obvio que encontramos.</p>
+        <span class="timeline-tag">Caminamos, reimos, y lo pasamos ¡super!</span>
+      </div>
+    </div>
+
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/fotoyapla.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Bañaditos en sal</h3>
+        <p class="timeline-desc">Dia rico, nos bañamos muucho y juntitos superamos las grandes olas del mar. Como siempre equipazo.</p>
+        <span class="timeline-tag">Tus primeros piqueros</span>
+      </div>
+    </div> -->
+
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/fotoplaya.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Abrazaditos junto al mar</h3>
+        <p class="timeline-desc">Momento antes de volver a la realidad, me encanta esta foto, ver como te acobijas a mi.</p>
+        <span class="timeline-tag">Reimos muchoooo</span>
+      </div>
+    </div> -->
+
+    <!-- <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2025</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/f6.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Dunas del amor</h3>
+        <p class="timeline-desc">Aqui ya en el surcito, con ese frio en los pies que casi nos congelamos jajaja pero una experiencia inolvidable.</p>
+        <span class="timeline-tag">Fotito antes del chapuson</span>
+      </div>
+    </div> -->
+
+    <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2026</span>
       <div class="timeline-content">
         <div class="timeline-img">
           <img src="Img/f5.JPEG" alt="Seguimos brillando" loading="lazy">
         </div>
-        <h3 class="timeline-title">Siguiendo brillando juntos</h3>
-        <p class="timeline-desc">Aquí seguimos, creciendo, aprendiendo y eligiéndonos cada día. Porque el amor no es perfecto, pero cuando es genuino, siempre encuentra la forma de brillar.</p>
-        <span class="timeline-tag">Siempre juntos</span>
+        <h3 class="timeline-title">Besito antes de irnos a casa</h3>
+        <p class="timeline-desc">Despues del almuerzo rico y bañarnos en aguitas termales, besito para irnos de regreso a la cabaña.</p>
+        <span class="timeline-tag">Besito congelados</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2026</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="Img/f4.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Laguna corazón</h3>
+        <p class="timeline-desc">Pequeño trecking (ya eramos expertos) caminamos entre medio de bosques y vimos el pueblito desde el cerro y un columpio que mmm, era medio aburrido pero lindo jiji </p>
+        <span class="timeline-tag">Asi de grande es nuesto amor, más grande que ese corazon de agua</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2026</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="/Img/f3.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Volcan Villarrica</h3>
+        <p class="timeline-desc">Despues de casi no subir jajaja (por el camnino) sacamos esta fotito hermosa, hacia frio ese dia pero la vista era hermosa</p>
+        <span class="timeline-tag">Con un frio pero valio la pena</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="date"><span class="date-icon">❤️</span>2026</span>
+      <div class="timeline-content">
+        <div class="timeline-img">
+          <img src="Img/f2.JPEG" alt="Seguimos brillando" loading="lazy">
+        </div>
+        <h3 class="timeline-title">Volcan Mosho-Choshuenco</h3>
+        <p class="timeline-desc">Una de las mejores experiencias de mi vida, conocimos lugares hermoso y lleno de paz. Llehamos a la sima juntitos para ver lo hermoso de ese sendero.</p>
+        <span class="timeline-tag">Abrazaitos no pasamos frio</span>
       </div>
     </div>
 
@@ -595,29 +737,23 @@
     <div class="frame"><img src="Img/f6.JPEG" alt="Amor que trasciende" loading="lazy"></div>
   </div>
 
-  <!-- ===== MÚSICA =====
-  <div class="music-box reveal" id="musicBox">
-    <button id="playBtn">▶</button>
-    <div class="info">
-      <p class="song-name">✨ nuestra canción</p>
-      <p>tócame para escucharla</p>
-    </div>
-    <div class="vinyl"></div>
-  </div> -->
-
-  <audio id="audio" src="Music/marea.mp3" loop></audio>
+  <!-- Reproductor de audio de fondo: el archivo de música está en /Music/marea.mp3 -->
+  <audio id="audio" src="Music/miamor.mp3" loop></audio>
 
   <section class="note reveal">
-    <p>sé que jamás voy a mirar este tiempo contigo como algo que no valió la pena.
+    <p>
+      Sé que jamás voy a mirar este tiempo contigo como algo que no valió la pena.
       Porque me enseñaste a querer de una forma distinta. Me enseñaste ternura, compañía, paciencia y amor. Y por eso voy a estar siempre agradecido.
-      Te amo, Jose. Con mis certezas, con mis dudas, con mis miedos y también con todo lo bueno que siento por ti.
-      Y si algo deseo para mí, para ti y para nosotros, es que podamos seguir creciendo, sanando y convirtiéndonos en mejores personas, porque tú has sido una de las personas más importantes y bonitas que han llegado a mi vida.
+      Contigo aprendí que amar también es elegir quedarse en los momentos difíciles, aprender de los errores y encontrar motivos para seguir creciendo. Me enseñaste cosas de mí que no conocía, me ayudaste a ver mis fortalezas y también aquellas cosas que quiero mejorar. Por eso, independientemente de todo, siempre vas a ocupar un lugar muy especial en mi corazón.
+      Quiero ser una mejor persona. Por mí, por mi futuro, pero también porque el amor que siento por ti me inspira a crecer, a madurar y a construir una mejor versión de quien soy. No porque me lo pidas, sino porque cuando uno ama de verdad, nace el deseo de cuidar, de aprender y de entregar lo mejor de sí mismo.
+      Te amo, Jose. Con mis certezas, con mis dudas, con mis miedos y también con todo lo bueno que siento por ti. Te amo por la persona que eres, por tu forma de ver la vida, por los momentos que compartimos y por todas las huellas bonitas que has dejado en mí.
+      Y si algo deseo para mí, para ti y para nosotros, es que podamos seguir creciendo, sanando y convirtiéndonos en mejores personas. Porque tú has sido una de las personas más importantes y bonitas que han llegado a mi vida, y porque, pase lo que pase, siempre voy a agradecer haber coincidido contigo.
     </p>
   </section>
 
   <div class="signoff reveal">
     <p>Te quiero & Te amo, Josefina. Más de lo que normalmente logro decir en voz alta.</p>
-    <div class="signature">✨ Con mucho amor, bajo las mismas estrellas ✨</div>
+    <div class="signature">Con mucho amor, bajo las mismas estrellas</div>
   </div>
 </main>
 
@@ -673,6 +809,9 @@
   }
 
   // ===== SOBRE =====
+  // Al tocar el sobre: se abre la animación, se reproduce el audio (aprovechando
+  // el gesto del usuario, ya que los navegadores bloquean el autoplay sin clic),
+  // y luego de la animación se revela el contenido y se activa el scroll.
   const envelope = document.getElementById('envelope');
   const cover = document.getElementById('cover');
   
@@ -681,13 +820,7 @@
     envelope.classList.add('opened');
 
     const audioEl = document.getElementById('audio');
-    const playButton = document.getElementById('playBtn');
-    const musicBoxEl = document.getElementById('musicBox');
-    
-    audioEl.play().then(() => {
-      playButton.textContent = '❙❙';
-      musicBoxEl.classList.add('playing');
-    }).catch(() => {});
+    audioEl.play().catch(() => {});
 
     setTimeout(() => {
       cover.classList.add('open');
@@ -722,23 +855,6 @@
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = (scrollTop / docHeight) * 100;
     document.getElementById('progressBar').style.width = progress + '%';
-  });
-
-  // ===== MÚSICA =====
-  const audio = document.getElementById('audio');
-  const playBtn = document.getElementById('playBtn');
-  const musicBox = document.getElementById('musicBox');
-  
-  playBtn.addEventListener('click', () => {
-    if(audio.paused) {
-      audio.play().catch(() => {});
-      playBtn.textContent = '❙❙';
-      musicBox.classList.add('playing');
-    } else {
-      audio.pause();
-      playBtn.textContent = '▶';
-      musicBox.classList.remove('playing');
-    }
   });
 </script>
 
